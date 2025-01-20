@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load static %}
+
 <head>
     <meta charset="UTF-8">
     <title>Geek Book</title>
@@ -61,19 +61,21 @@
     </div>
 </nav>
 
-<link rel="stylesheet" href="css/book.css">
+<link rel="stylesheet" href="{% static 'css/book.css' %}">
 <!-- Контент с карточками -->
 <div class="container mt-4 content">
     <div class="row justify-content-center">
         <!-- Пример карточки книги -->
         <div class="col-md-4 mb-4">
             <div class="card" style="width: 100%;">
-                <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Обложка книги">
+                {% for book in books %}
+                <img src="{{ book.image.url }}" class = "card-img-top" alt= "Книга">
                 <div class="card-body">
-                    <h5 class="card-title">Название книги</h5>
-                    <p class="card-text">Дата выхода</p>
-                    <a href="../../../../Downloads/GeeksLibrary%20(1)/GeeksLibrary/book_detail.html" class="btn btn-primary">Подробнее</a>
+                    <h5 class="card-title">{{book.title}}</h5>
+                    <p class="card-text">{{ book.created_at }}</p>
+                    <a href='{{book.id }}' class="btn btn-primary">Подробнее</a>
                 </div>
+                {% endfor %}
             </div>
         </div>
         <!-- Добавьте дополнительные карточки книг здесь -->

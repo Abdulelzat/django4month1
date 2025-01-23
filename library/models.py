@@ -14,6 +14,7 @@ class Book(models.Model):
     genre = models.CharField(choices=GENRE_CHOICES, max_length=100,verbose_name='Жанр')
     email = models.EmailField(verbose_name='Почта')
     author = models.CharField(max_length=50,verbose_name='Автор')
+    trailer = models.URLField(verbose_name='Укажите ссылку с YOUTUBE', default='', blank=True)
 
     def __str__(self):
         return self.title
